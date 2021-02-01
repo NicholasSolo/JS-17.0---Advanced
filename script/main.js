@@ -41,8 +41,8 @@ console.log(output);
  
 // Вторая задача
 
-const login = prompt('Ты кто?', '');
+const namePerson = prompt('Ты кто?', '');
 
-(login === 'Артём' || login === 'Артем') ? console.log('Привет, директор') : (login === 'Максим') ? console.log('Привет, преподаватель') : ( login === null || login === '' ) ? console.log('Ошибка, повторите ввод') : console.log(`Привет, ${login}`);
+(namePerson === 'Артём' || namePerson === 'Артем') ? console.log('Привет, директор') : (namePerson === 'Максим') ? console.log('Привет, преподаватель') : ( namePerson === null || namePerson === '' ) ? console.log('Ошибка, повторите ввод') : console.log(`Привет, ${namePerson}`);
 
 
