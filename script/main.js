@@ -1,17 +1,48 @@
 "use strict";
 
-const num = 266219;
+const lang = prompt("Выберите язык отображения:", "ru");
 
-function transform(number) {
-  number = number.toString().split("");
+// a - через if
 
-  const multipleAll = number.reduce((res, current) => res * current);
-
-  const numPow = multipleAll ** 3;
-  console.log(numPow);
-
-  const result = numPow.toString().slice(0, 2);
-  console.log(result);
+if (lang === "ru") {
+  console.log(
+    "Понедельник, вторник, среда, четверг, пятница, суббота, воскресенье"
+  );
+} else if (lang === "en") {
+  console.log("Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday");
 }
 
-transform(num);
+// b - через switch-case
+
+switch (lang) {
+  case "ru":
+    console.log(
+      "Понедельник, вторник, среда, четверг, пятница, суббота, воскресенье"
+    );
+    break;
+  case "en":
+    console.log(
+      "Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday"
+    );
+    break;
+}
+
+// c - через многомерный массив
+
+const week = [
+  ["Понедельник", "вторник", "среда", "четверг", "пятница", "суббота", "воскресенье"],
+  ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+];
+
+const output = (lang === 'ru') ? week[0].join(', ') : (lang === 'en') ? week[1].join(', ') : 'Ошибка, повторите ввод';
+
+console.log(output);
+
+ 
+// Вторая задача
+
+const login = prompt('Ты кто?', '');
+
+(login === 'Артём' || login === 'Артем') ? console.log('Привет, директор') : (login === 'Максим') ? console.log('Привет, преподаватель') : ( login === null || login === '' ) ? console.log('Ошибка, повторите ввод') : console.log(`Привет, ${login}`);
+
+
