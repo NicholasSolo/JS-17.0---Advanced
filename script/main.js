@@ -31,7 +31,7 @@ switch (lang) {
 
 const week = {
   ru: [russian],
-  eng: [english],
+  en: [english],
 };
 
 console.log("Через многомерный массив:", week[lang].join());
