@@ -1,46 +1,18 @@
 "use strict";
 
-const lang = prompt("Выберите язык отображения:", "ru");
-const russian = "Понедельник, вторник, среда, четверг, пятница, суббота, воскресенье";
-const english = "Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday";
+const string =
+  "   По своей сути рыбатекст является альтернативой традиционному lorem ipsum, который вызывает у некторых людей недоумение при попытках прочитать рыбу текст. В отличии от lorem ipsum, текст рыба на русском языке наполнит любой макет непонятным смыслом и придаст неповторимый колорит советских времен.    ";
 
-// a - через if
-
-if (lang === "ru") {
-  console.log(russian);
-} else if (lang === "en") {
-  console.log(english);
-} else {
-  console.log("Ошибка, повторите ввод");
+function stringTransform(parameter) {
+  if (typeof parameter !== "string") {
+    alert("Ахтунг! Неверный тип данных");
+    return;
+  } else if (parameter.length > 30) {
+    const newString = parameter.trim().slice(0, 30) + "...";
+    return newString;
+  } else {
+    return parameter.trim();
+  }
 }
 
-// b - через switch-case
-
-switch (lang) {
-  case "ru":
-    console.log(russian);
-    break;
-  case "en":
-    console.log(english);
-    break;
-  default:
-    console.log("Ошибка, повторите ввод");
-}
-
-// c - через многомерный массив
-
-const week = {
-  ru: [russian],
-  en: [english],
-};
-
-console.log("Через многомерный массив:", week[lang].join());
-
-// Вторая задача
-
-const namePerson = prompt("Ты кто?", "");
-
-(namePerson === "Артём" || namePerson === "Артем") ? console.log("Привет, директор") : 
-(namePerson === "Максим") ? console.log("Привет, преподаватель") : 
-(namePerson === null || namePerson === "") ? console.log("Ошибка, повторите ввод") : 
-                                             console.log(`Привет, ${namePerson}`);
+console.log(stringTransform(string));
