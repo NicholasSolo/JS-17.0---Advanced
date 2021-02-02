@@ -34,7 +34,7 @@ const week = {
   eng: [english],
 };
 
-console.log("через многомерный массив:", week[lang].join(""));
+console.log("Через многомерный массив:", week[lang].join());
 
 // Вторая задача
 
