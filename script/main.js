@@ -1,10 +1,8 @@
 "use strict";
 
 const lang = prompt("Выберите язык отображения:", "ru");
-const russian =
-  "Понедельник, вторник, среда, четверг, пятница, суббота, воскресенье";
-const english =
-  "Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday";
+const russian = "Понедельник, вторник, среда, четверг, пятница, суббота, воскресенье";
+const english = "Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday";
 
 // a - через if
 
