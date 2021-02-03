@@ -1,6 +1,6 @@
 "use strict";
 
-const string = prompt('Enter here', '         Если в процессе чтения возникает ошибка, они возвращают полученное до ошибки число        ');
+const string = '         Если в процессе чтения возникает ошибка, они возвращают полученное до ошибки число        ';
 
 function stringTransform(parameter) {
   if (isFinite(parameter)) {
