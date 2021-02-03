@@ -1,18 +1,23 @@
 "use strict";
 
-const string =
-  "   По своей сути рыбатекст является альтернативой традиционному lorem ipsum, который вызывает у некторых людей недоумение при попытках прочитать рыбу текст. В отличии от lorem ipsum, текст рыба на русском языке наполнит любой макет непонятным смыслом и придаст неповторимый колорит советских времен.    ";
+const string = prompt('Enter here', '         Если в процессе чтения возникает ошибка, они возвращают полученное до ошибки число        ');
 
 function stringTransform(parameter) {
-  if (typeof parameter !== "string") {
+  if (isFinite(parameter)) {
     alert("Ахтунг! Неверный тип данных");
     return;
-  } else if (parameter.length > 30) {
-    const newString = parameter.trim().slice(0, 30) + "...";
-    return newString;
+  }
+  
+  let trimmedString = parameter.trim();
+
+  if (trimmedString.length > 30) {
+    let result = trimmedString.slice(0, 30) + "...";
+    return result;
   } else {
-    return parameter.trim();
+    return trimmedString;
   }
 }
 
 console.log(stringTransform(string));
+
+
