@@ -1,9 +1,9 @@
 "use strict";
 
-const string = NaN;
+const string = prompt('dewfdwef');
 
 function stringTransform(parameter) {
-  if (isFinite(parameter) || Number.isNaN(parameter) || typeof parameter === ('object')) {
+  if (isFinite(parameter) || Number.isNaN(parameter) || typeof parameter === ('object' || 'null')) {
     alert("Ахтунг! Неверный тип данных");
     return;
   }
