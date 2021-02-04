@@ -38,25 +38,3 @@ newIteration: for (let i = 1; i <= 100; i++) {
   console.log(i + " -" + " Делители этого числа 1 и " + i);
 }
 
-// function isNumber(number) {
-//   return !isNaN(parseFloat(number)) && isFinite(number);
-// }
-
-// function isSimple(number) {
-//   if (isNumber(number)) {
-//   }
-// }
-
-// console.log(isSimple());
-
-let a = 50;
-
-function funcMath() {
-  let a = 10;
-  return function () {
-    console.log(a * a);
-  };
-}
-
-const mathPow = funcMath();
-mathPow();
