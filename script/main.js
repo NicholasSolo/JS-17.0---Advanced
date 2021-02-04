@@ -37,4 +37,3 @@ newIteration: for (let i = 1; i <= 100; i++) {
   }
   console.log(i + " -" + " Делители этого числа 1 и " + i);
 }
-
