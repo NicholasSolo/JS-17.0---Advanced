@@ -1,9 +1,9 @@
 "use strict";
 
-const string = '         Если в процессе чтения возникает ошибка, они возвращают полученное до ошибки число        ';
+const string = NaN;
 
 function stringTransform(parameter) {
-  if (isFinite(parameter)) {
+  if (isFinite(parameter) || Number.isNaN(parameter) || typeof parameter === ('object')) {
     alert("Ахтунг! Неверный тип данных");
     return;
   }
