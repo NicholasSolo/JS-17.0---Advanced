@@ -1,39 +1,50 @@
 "use strict";
 
-let arr = [
-  "2343434",
-  "3434231",
-  "4444343424",
-  "10009878",
-  "5663422424",
-  "43331345",
-  "22220099899",
-];
-
-function filterArr(arr) {
-  let result = arr.filter((item) => {
-    if (item[0] === "2" || item[0] === "4") {
-      return item;
-    }
-  });
-
-  for (let i = 0; i < result.length; i++) {
-    console.log(result[i]);
-  }
+function isNumber(number) {
+  return !isNaN(parseFloat(number)) && isFinite(number);
 }
 
-filterArr(arr);
+function guessNumber() {
+  let number = 34;
+  let attemptsCounter = 10;
 
-//вывод простого числа
+  function guessNumberInner() {
+    let userAnswer = prompt("Угадайте число от 1 до 100!", "");
 
-newIteration: for (let i = 1; i <= 100; i++) {
-  if (i === 1) {
-    continue newIteration;
-  }
-  for (let j = 2; j < i; j++) {
-    if (i % j === 0) {
-      continue newIteration;
+    if (userAnswer === null) {
+      alert("Игра окончена");
+      return;
+    } else if (!isNumber(userAnswer) || userAnswer > 100 || userAnswer < 0) {
+      alert("Введите число от 1 до 100!");
+      guessNumberInner();
+    } else if (userAnswer == number) {
+      let repeat = confirm("Угадали! Сыграем еще?");
+          if (repeat) {
+            attemptsCounter = 10;
+            number = Math.ceil(Math.random() * (1 - 100) + 100);
+            guessNumberInner();
+          } else {
+            alert("Приходите еще!");
+          }
+    } else if (userAnswer > number) {
+      alert(
+        `Загаданное число меньше. У вас осталось ${--attemptsCounter} попыток`
+      );
+      console.log("Загаданное число:", number); // указал для демонстрации рандома после первого выигрыша
+      guessNumberInner();
+    } else if (userAnswer < number) {
+      alert(
+        `Загаданное число больше. У вас осталось ${--attemptsCounter} попыток`
+      );
+      console.log("Загаданное число:", number); // указал для демонстрации рандома после первого выигрыша
+      guessNumberInner();
+    } else {
+      alert("Что-то пошло не так");
+      return;
     }
   }
-  console.log(i + " -" + " Делители этого числа 1 и " + i);
+  return guessNumberInner;
 }
+
+let game = guessNumber();
+game();
