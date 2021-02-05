@@ -32,7 +32,7 @@ function guessNumber() {
       let repeatWin = confirm("Угадали! Сыграем еще?");
             if (repeatWin) {
                 attemptsCounter = 10;  // вот тут не получалось. После этой строки я просто вызывал guessNumber() и скрипт завершался. 
-                //После присвоения результата выполнения guessNumber в новую переменную и последующего ее вызова все ок. Это правильно?
+                                      //После присвоения результата выполнения guessNumber в новую переменную и последующего ее вызова все ок. Это правильно?
                 let newGame = guessNumber();
                 newGame();
             } else {
@@ -40,14 +40,12 @@ function guessNumber() {
             }
     } else if (userAnswer > number) {
       alert(`Загаданное число меньше. Осталось попыток: ${--attemptsCounter}`);
-      console.log("Загаданное число:", number); // указал для демонстрации рандома после первого выигрыша
-      console.log(attemptsCounter);
-      guessNumberInner();
+        console.log("Загаданное число:", number); // указал для демонстрации рандома после первого выигрыша
+          guessNumberInner();
     } else if (userAnswer < number) {
       alert(`Загаданное число больше. Осталось попыток: ${--attemptsCounter}`);
-      console.log("Загаданное число:", number); // указал для демонстрации рандома после первого выигрыша
-      console.log(attemptsCounter);
-      guessNumberInner();
+        console.log("Загаданное число:", number); // указал для демонстрации рандома после первого выигрыша
+          guessNumberInner();
     } else {
       alert("Что-то пошло не так");
       return;
