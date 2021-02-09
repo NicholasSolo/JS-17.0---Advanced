@@ -1,59 +1,41 @@
 "use strict";
 
-function isNumber(number) {
-  return !isNaN(parseFloat(number)) && isFinite(number);
-}
+const textBox = document.querySelector(".box");	
 
-function guessNumber() {
-  const number = Math.ceil(Math.random() * (1 - 100) + 100);
-  let attemptsCounter = 10;
+const week = [	
+  "Понедельник",	
+  "Вторник",	
+  "Среда",	
+  "Четверг",	
+  "Пятница",	
+  "Суббота",	
+  "Воскресенье",	
+];	
 
-  function guessNumberInner() {
-    if (attemptsCounter < 1) {
-      let repeatLose = confirm("Ты проиграл! Попробуешь еще?");
-      if (repeatLose) {
-        attemptsCounter = 10;
-        guessNumberInner();
-      } else {
-        alert("Возвращайся");
-      }
-      return;
-    }
+const showWeek = function (arr) {	
+  for (let i = 0; i < arr.length; i++) {	
+    textBox.innerHTML += arr[i] + "<br/>";	
 
-    let userAnswer = prompt("Угадайте число от 1 до 100!", "");
+    if (arr[i] == "Воскресенье") {	
+      textBox.style.fontFamily = "italic";	
+    }	
+  }	
+};	
 
-    if (userAnswer === null) {
-      alert("Игра окончена");
-      return;
-    } else if (!isNumber(userAnswer) || userAnswer > 100 || userAnswer < 0) {
-      alert("Введите число от 1 до 100!");
-      guessNumberInner();
-    } else if (userAnswer == number) {
-      let repeatWin = confirm("Угадали! Сыграем еще?");
-            if (repeatWin) {
-                attemptsCounter = 10;  // вот тут не получалось. После этой строки я просто вызывал guessNumber() и скрипт завершался. 
-                                      //После присвоения результата выполнения guessNumber в новую переменную и последующего ее вызова все ок. Это правильно?
-                let newGame = guessNumber();
-                newGame();
-            } else {
-                alert("Приходите еще!");
-            }
-    } else if (userAnswer > number) {
-      alert(`Загаданное число меньше. Осталось попыток: ${--attemptsCounter}`);
-        console.log("Загаданное число:", number); // указал для демонстрации рандома после первого выигрыша
-          guessNumberInner();
-    } else if (userAnswer < number) {
-      alert(`Загаданное число больше. Осталось попыток: ${--attemptsCounter}`);
-        console.log("Загаданное число:", number); // указал для демонстрации рандома после первого выигрыша
-          guessNumberInner();
-    } else {
-      alert("Что-то пошло не так");
-      return;
-    }
-  }
-  return guessNumberInner;
-}
+showWeek(week);	
 
-let game = guessNumber();
-game();
+var today = new Date();	
+var weekday = today.getUTCDay();	
+
+// const showWeek = function (arr) {	
+//   for (let prop of arr) {	
+//     textBox.innerHTML += prop + '<br/>';	
+
+//     if (prop == 'Суббота' ) {	
+//       textBox.style.fontStyle = 'italic';	
+//       prop.pop();	
+//     }	
+//   }	
+
+// };
 
