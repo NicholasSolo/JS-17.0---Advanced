@@ -14,7 +14,7 @@ const week = [
 
 let now = new Date();
 
-week.forEach((item, index, arr) => {
+week.forEach((item) => {
   let container = document.createElement("p");
   textBox.append(container);
   container.innerHTML = item;
