@@ -1,41 +1,16 @@
 "use strict";
 
-const textBox = document.querySelector(".box");	
+const color = document.querySelector("#color");
+const change = document.querySelector("#change");
 
-const week = [	
-  "Понедельник",	
-  "Вторник",	
-  "Среда",	
-  "Четверг",	
-  "Пятница",	
-  "Суббота",	
-  "Воскресенье",	
-];	
+change.addEventListener("click", () => {
+  const red = Math.trunc(Math.random() * 255);
+  const green = Math.trunc(Math.random() * 255);
+  const blue = Math.trunc(Math.random() * 255);
+  const outputColor = "#" + red.toString(16) + green.toString(16) + blue.toString(16);
 
-const showWeek = function (arr) {	
-  for (let i = 0; i < arr.length; i++) {	
-    textBox.innerHTML += arr[i] + "<br/>";	
-
-    if (arr[i] == "Воскресенье") {	
-      textBox.style.fontFamily = "italic";	
-    }	
-  }	
-};	
-
-showWeek(week);	
-
-var today = new Date();	
-var weekday = today.getUTCDay();	
-
-// const showWeek = function (arr) {	
-//   for (let prop of arr) {	
-//     textBox.innerHTML += prop + '<br/>';	
-
-//     if (prop == 'Суббота' ) {	
-//       textBox.style.fontStyle = 'italic';	
-//       prop.pop();	
-//     }	
-//   }	
-
-// };
-
+  color.innerHTML = outputColor;
+  change.style.color = outputColor;
+  document.body.style.backgroundColor = outputColor;
+  document.body.style.transition = "0.5s ease-in";
+});

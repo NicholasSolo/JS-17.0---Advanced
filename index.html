@@ -1,12 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GLO Academy - Advanced</title>
+    <style>
+      body {
+        background-color: yellowgreen;
+      }
+      .wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      h1 {
+        font-weight: 800;
+        font-size: 40px;
+        margin-bottom: 20px;
+        color: white;
+      }
+      #change {
+        background-color: #fff;
+        border-radius: 5px;
+        outline: none;
+        border: none;
+        padding: 15px;
+        font-weight: bold;
+        color: yellowgreen;
+        cursor: pointer;
+      }
+    </style>
     <script src="script/main.js" defer></script>
-</head>
-<body>
-
-</body>
+  </head>
+  <body>
+    <div class="wrapper">
+      <h1 id="color">Код цвета</h1>
+      <button id="change" type="button">Новый цвет</button>
+    </div>
+  </body>
 </html>
