@@ -1,16 +1,64 @@
 "use strict";
 
-const color = document.querySelector("#color");
-const change = document.querySelector("#change");
+function DomElement(params) {
+  this.selector = params.selector;
+  this.height = params.height;
+  this.width = params.width;
+  this.bg = params.bg;
+  this.fontSize = params.fontSize;
+  this.position = params.position;
+}
 
-change.addEventListener("click", () => {
-  const red = Math.trunc(Math.random() * 255);
-  const green = Math.trunc(Math.random() * 255);
-  const blue = Math.trunc(Math.random() * 255);
-  const outputColor = "#" + red.toString(16) + green.toString(16) + blue.toString(16);
+DomElement.prototype.generateElem = function () {
+  const parent = document.querySelector("body");
 
-  color.innerHTML = outputColor;
-  change.style.color = outputColor;
-  document.body.style.backgroundColor = outputColor;
-  document.body.style.transition = "0.5s ease-in";
+  if (this.selector[0] === ".") {
+    const newElem = document.createElement("div");
+    newElem.classList.add(this.selector.slice(1));
+    newElem.style.cssText = `height: ${this.height};  width: ${this.width};  background-color: ${this.bg};  font-size: ${this.fontSize}; position: ${this.position}`;
+    newElem.style.color = "red";
+    parent.append(newElem);
+  } else if (this.selector[0] === "#") {
+    const newElem = document.createElement("div");
+    newElem.id = this.selector.slice(1);
+    newElem.style.cssText = `height: ${this.height};  width: ${this.width};  background-color: ${this.bg};  font-size: ${this.fontSize}; position: ${this.position}`;
+    newElem.style.color = "red";
+    parent.append(newElem);
+  }
+};
+
+document.addEventListener("DOMContentLoaded", () => {
+  const test = new DomElement({
+    selector: ".block",
+    height: "100px",
+    width: "100px",
+    bg: "green",
+    fontSize: "20px",
+    position: "absolute",
+  });
+  test.generateElem();
+
+  document.querySelector("body").addEventListener("keydown", (event) => {
+    console.log(event);
+    const block = document.querySelector(".block");
+
+    function move() {
+      if (event.code === "ArrowUp") {
+        block.style.top = "100px";
+        move();
+      } else if (event.code === "ArrowDown") {
+        block.style.bottom = "100px";
+        move();
+      } else if (event.code === "ArrowLeft") {
+        block.style.left = "100px";
+        move();
+      } else if (event.code === "ArrowRight") {
+        block.style.right = "100px";
+        move();
+      } else {
+        alert("use arrows");
+      }
+    }
+    move();
+  });
 });
