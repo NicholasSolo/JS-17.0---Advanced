@@ -12,18 +12,20 @@ const week = [
   "Воскресенье",
 ];
 
-let now = new Date();
+const now = new Date();
 
 week.forEach((item) => {
-  let container = document.createElement("p");
-  textBox.append(container);
-  container.innerHTML = item;
+  const container = document.createElement("p");
+  container.textContent = item;
   if (item === "Суббота" || item === "Воскресенье") {
-    container.style.fontStyle = "italic";
+    container.classList.add('italic');
   }
-  if (item.toLowerCase() === now.toLocaleString('ru', {weekday:'long'}).toLowerCase()) {
-    container.style.fontWeight = "bold";
+
+  const currentDay = now.toLocaleString('ru', {weekday:'long'}).toLowerCase();
+  if (item.toLowerCase() === currentDay) {
+    container.classList.add('bold');
   }
+  textBox.append(container);
 });
 
 
