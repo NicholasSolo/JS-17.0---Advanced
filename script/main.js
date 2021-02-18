@@ -1,41 +1,28 @@
 "use strict";
 
-const textBox = document.querySelector(".box");	
+const clock = document.querySelector(".box");
 
-const week = [	
-  "Понедельник",	
-  "Вторник",	
-  "Среда",	
-  "Четверг",	
-  "Пятница",	
-  "Суббота",	
-  "Воскресенье",	
-];	
+let today = new Date();
 
-const showWeek = function (arr) {	
-  for (let i = 0; i < arr.length; i++) {	
-    textBox.innerHTML += arr[i] + "<br/>";	
+function time2() {
+  let now = new Date();
 
-    if (arr[i] == "Воскресенье") {	
-      textBox.style.fontFamily = "italic";	
-    }	
-  }	
-};	
+  let date = now.getDate();
+  // if(date){
 
-showWeek(week);	
+  // }
+  let month = now.getMonth() + 1;
+  if (month < 10) {
+    month = "0" + (+now.getMonth() + 1);
+  }
+  let year = now.getFullYear();
+  let hour = now.getHours();
 
-var today = new Date();	
-var weekday = today.getUTCDay();	
+  let minutes = now.getMinutes();
 
-// const showWeek = function (arr) {	
-//   for (let prop of arr) {	
-//     textBox.innerHTML += prop + '<br/>';	
+  let seconds = now.getSeconds();
 
-//     if (prop == 'Суббота' ) {	
-//       textBox.style.fontStyle = 'italic';	
-//       prop.pop();	
-//     }	
-//   }	
+  console.log(date, month, year, hour, minutes, seconds);
+}
 
-// };
-
+time2();
