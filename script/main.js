@@ -19,7 +19,6 @@ class DomElement {
       newElem.id = this.selector.slice(1);
     }
     newElem.style.cssText = `height: ${this.height};  width: ${this.width};  background-color: ${this.bg};  font-size: ${this.fontSize}; position: ${this.position}`;
-    newElem.style.color = "red";
     document.querySelector("body").append(newElem);
   }
 }
@@ -36,22 +35,24 @@ document.addEventListener("DOMContentLoaded", () => {
   test.generateElem();
 });
 
-document.querySelector("body").addEventListener("keydown", (event) => {
-    move(event);
-});
-
-function move(event) {
+document.addEventListener("keydown", (event) => {
 const block = document.querySelector(".block");
 
-  if (event.code === "ArrowUp") {
-    block.style.top = "-10px";
-  } else if (event.code === "ArrowDown") {
-    block.style.bottom = "-10px";
-  } else if (event.code === "ArrowLeft") {
-    block.style.left = "-10px";
-  } else if (event.code === "ArrowRight") {
-    block.style.right = "-10px";
-  } else {
-    alert("use arrows");
+  let domStyle = getComputedStyle(block);
+  let top = parseInt(domStyle.top);
+  let left = parseInt(domStyle.left);
+  switch(event.key){
+    case "ArrowUp":
+      block.style.top = top - 10 + "px";
+      break;
+    case "ArrowDown":
+      block.style.top = top + 10 + "px";
+      break;
+    case "ArrowRight":
+      block.style.left = left + 10 + "px";
+      break;
+    case "ArrowLeft":
+      block.style.left = left - 10 + "px";
+      break;
   }
-}
+});
