@@ -1,19 +1,61 @@
 "use strict";
 
-const input = document.getElementById("input");
-const output = document.getElementById("output");
+const startBtn = document.getElementById("start");
+const resetBtn = document.getElementById("reset");
 
-function debounce(func, time) {
-  return function (args) {
-    let previousCall = this.lastCall;
-    this.lastCall = Date.now();
-    if (previousCall && this.lastCall - previousCall <= time) {
-      clearTimeout(this.lastCallTimer);
-    }
-    this.lastCallTimer = setTimeout(() => func(args), time);
-  };
+const man = document.querySelector(".man");
+const plane = document.querySelector(".plane");
+
+let count = 0;
+let requestID;
+
+function flyAnimate() {
+  requestID = requestAnimationFrame(flyAnimate);
+  count++;
+
+  if (count < 350) {
+    man.style.top = count + "px";
+    plane.style.left = count + "px";
+  } else if (count < 500) {
+    plane.style.left = count + "px";
+  } else {
+    cancelAnimationFrame(requestID);
+  }
 }
-const textDelay = () => {
-  output.textContent = input.value;
+let animate = false;
+
+const initAnimation = () => {
+  if (!animate) {
+    requestID = requestAnimationFrame(flyAnimate);
+    animate = true;
+  } else {
+    animate = false;
+    cancelAnimationFrame(requestID);
+  }
 };
-input.addEventListener("input", debounce(textDelay, 500));
+startBtn.addEventListener("click", () => {
+  initAnimation();
+});
+resetBtn.addEventListener("click", () => {
+  if (animate) initAnimation();
+  count = 0;
+  man.style.top = count + "px";
+  plane.style.left = count + "px";
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

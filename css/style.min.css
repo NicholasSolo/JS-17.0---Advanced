@@ -1,0 +1,19 @@
+body {
+  height: 100vh;
+  background-image: url(../img/sky.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+.man > img {
+  height: 200px;
+  width: 200px;
+}
+.plane {
+  width: fit-content;
+  height: fit-content;
+}
+.plane,
+.man {
+  position: relative;
+}
